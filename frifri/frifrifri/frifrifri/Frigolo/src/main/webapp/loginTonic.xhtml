@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns="http://www.w3.org/1999/xhtml">
+	
+	
+
+<h:head>
+	<title>Frigolo </title>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+</h:head>
+
+<body>
+    <ui:fragment rendered="#{not identity.loggedIn}">
+     Entre tes identifiants clasheuuuuur :<br/><br/>
+      <h:form method="POST" prependId="false">
+        Username: <h:inputText value="#{loginCredentials.userId}" required="true"/><br/>
+        Password: <h:inputSecret value="#{loginCredentials.password}" required="true"/><br/>
+        <h:commandButton value="Finish" action="#{identity.login}"/>
+      </h:form>
+    </ui:fragment>
+    <ui:fragment rendered="#{identity.loggedIn}">
+    <h3>Bienvenue #{identity.account.firstName} !</h3>
+      
+      <h:form>
+        <p>Clique ici pour <h:commandLink action="#{identity.logout}"> quitter </h:commandLink>.</p>
+        <p>Admin only <a href="http://localhost:8080/Frigolo/admin/adminPage.xhtml">here</a></p>
+      </h:form>
+    </ui:fragment>  
+
+</body>
+  
+</html>
+

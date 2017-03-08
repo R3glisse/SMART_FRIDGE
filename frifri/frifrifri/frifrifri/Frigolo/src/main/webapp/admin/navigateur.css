@@ -1,0 +1,28 @@
+.navigateur {
+    color: black;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 900;
+    margin-top:20px;
+}
+
+.container .navigateur p {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container .navigateur img {
+    width: 75px;
+    height: 75px;
+    float: right;
+}
+
+.bloc1 {
+    border-radius: 10px;
+    border-style: ridge;
+    background-color: #FEFDFD;
+    font-size: x-large;
+    font-weight: 900;
+}
+
+

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>user</title>
+
+	<link rel="stylesheet" href="bootstrap.min.css" />
+	<link rel="stylesheet" href="user.css" />
+	<link href="home-main2.css" rel="stylesheet" />
+	<link href="navigateur.css" rel="stylesheet" />
+
+
+
+</h:head>
+
+<h:body>
+
+	<div class="container">
+			<header class="row">
+			<div class="col-lg-12">
+				<div class="container navigateur">
+					<div class="row">
+						<div class="col-lg-3 bloc1">
+							<div class="row">
+								<div class="col-lg-6">
+									<a href="#"><img class="img-responsive"
+										src="images/menu.png" title="menu" alt="menu" /></a>
+								</div>
+								<div class="col-lg-6">
+									<a href="#"> Menu </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3"></div>
+
+						<div class="col-lg-3 bloc1">
+							<div class="row">
+								<div class="col-lg-6">
+									<a href="user.jsf"><img class="img-responsive"
+										src="images/maison.png" title="maison" alt="maison" /></a>
+								</div>
+								<div class="col-lg-6">
+									<a href="user.jsf"> Accueil </a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 bloc1">
+							<div class="row">
+								<div class="col-lg-6">
+									<a href="http://192.168.0.1:9990/Frigolo/portail.jsf"><img class="img-responsive"
+										src="images/fourmi.png" title="fourmi" alt="fourmi" /></a>
+								</div>
+								<div class="col-lg-6">
+									<a href="http://192.168.0.1:9990/Frigolo/portail.jsf"> Quitter </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</header>
+		<br> </br>
+		<div class="row">
+			<div class="col-lg-2">
+
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="ouvertures.jsf">Ouvertures</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="ouvertures.jsf"><img class="img-responsive"
+							src="images/ouvertures.png" title="ouvertures" alt="ouvertures" /></a>
+					</div>
+				</div>
+				<br> </br>
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="qualiteair.jsf">Qualité de l'air</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="qualiteair.jsf"><img class="img-responsive"
+							src="images/qualité_air.png" title="qualité_air"
+							alt="qualité_air" /></a>
+					</div>
+				</div>
+				<br> </br>
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="temperature.jsf">Temperature</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="temperature.jsf"><img class="img-responsive"
+							src="images/temperature.png" title="température"
+							alt="température" /></a>
+					</div>
+				</div>
+				<br> </br>
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="user.jsf">Frigo</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="user.jsf"><img class="img-responsive"
+							src="images/outils.png" title="outils" alt="outils" /></a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-lg-10">
+				<div class="row text">
+
+					<div class="col_lg-12">
+						<h:form>
+
+
+
+							<div class="row">
+								<div class="col-lg-12">
+
+
+
+									<div class="row">
+										<div class="col-lg-2">
+											<h1>Capteur</h1>
+										</div>
+										<div class="col-lg-2">
+
+
+											<f:metadata>
+												<f:viewAction
+													action="#{administrateurController.goingToAirQuality()}" />
+											</f:metadata>
+											<h:panelGrid columns="1" cellpadding="5">
+												<p:selectOneMenu id="sensor"
+													value="#{administrateurController.capteurNumeriqueId}">
+													<f:selectItem itemLabel="Capteur" itemValue=""
+														noSelectionOption="true" />
+													<f:selectItems
+														value="#{administrateurController.capteursNumeriques}"
+														var="sensor" itemLabel="#{sensor.nomCapteur}"
+														itemValue="#{sensor.idCapteur}" />
+												</p:selectOneMenu>
+											</h:panelGrid>
+
+
+										</div>
+										<div class="col-lg-2">
+											<h:commandButton
+												action="#{administrateurController.mesuresNumeriquesFromCapteurId()}"
+												value="Afficher mesures" styleClass="btn btn-success" />
+										</div>
+										<div class="col-lg-3">
+										</div>
+										<div class="col-lg-3">
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col-lg-12">
+											<p:chart type="line"
+												model="#{administrateurController.lineModelMesNum}"
+												style="height:300px;" responsive="true" />
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+
+
+
+
+
+
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row image_frigolo">
+			<img class="img-responsive" src="images/frigolo.png" title="frigolo"
+				alt="frigolo" />
+
+		</div>
+	</div>
+</h:body>
+</html>

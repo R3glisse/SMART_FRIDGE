@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+
+<title>Frigolo</title>
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+
+
+<link href="home-main.css" rel="stylesheet" />
+<link href="home-main2.css" rel="stylesheet" />
+<link href="navigateur.css" rel="stylesheet" />
+
+	
+
+</head>
+
+<body>
+
+	
+ 	
+
+	
+	
+	<div class="row title">
+		<div class="col-lg-12">
+			<h1>Frigolo</h1>
+		</div>
+	</div>
+
+    <ui:fragment rendered="#{not identity.loggedIn}">
+	<div class="row login">
+		<div class="col-lg-12">
+			<h3>Login to your account</h3>
+		</div>
+		<h:form>
+			<div class="col-lg-12">
+				Username:
+				<h:inputText value="#{loginCredentials.userId}" required="true" />
+			</div>
+			<div class="col-lg-12">
+				Password:
+				<h:inputSecret value="#{loginCredentials.password}" required="true" />
+			</div>
+			<div class="col-lg-12">
+				<h:commandButton value="Finish" action="#{identity.login}" />
+			</div>
+			<!-- 			<div class="col-lg-12"> -->
+			<!-- 			     <p>Admin <a href="http://192.168.0.1:9990/Frigolo/admin/user.jsf">here</a></p> -->
+			<!-- 			</div> -->
+			<!-- 			<div class="col-lg-12"> -->
+			<!-- 			     <p>User <a href="http://192.168.0.1:9990/Frigolo/user/user.jsf">here</a></p> -->
+			<!-- 			</div> -->
+			
+
+
+		</h:form>
+	</div>
+
+	<div class="row image_frigolo">
+		<img class="img-responsive" src="images/frigolo.png" title="frigolo"
+			alt="frigolo" />
+	</div>
+    </ui:fragment>
+    <ui:fragment rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('administrateur') }">
+   <meta http-equiv="Refresh" content="0; url=http://192.168.0.1:9990/Frigolo/admin/user.jsf"/>
+		
+</ui:fragment>
+
+ <ui:fragment rendered="#{identity.loggedIn and authorizationChecker.hasApplicationRole('membreFamille') }">
+   <meta http-equiv="Refresh" content="0; url=http://192.168.0.1:9990/Frigolo/user/user.jsf"/>
+		
+</ui:fragment>
+
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Frigolooooo</title>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Frigolo</h1>
+		</div>
+	</div>
+
+
+	<div class="row">
+
+		<!-- *********************************************************************************  -->
+		<!--                                  MESURES NUMERIQUES                                -->
+		<!-- *********************************************************************************  -->
+
+		<!--  DISPLAY ALL MESURES NUMERIQUES -->
+		<div class="col-md-4">
+			<h:dataTable value="#{administrateurController.mesuresNumeriques}"
+				var="mesuresNumeriques"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifier</f:facet>
+					<h:outputText value="#{mesuresNumeriques.idMesure}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Value</f:facet>
+					<h:outputText value="#{mesuresNumeriques.valeur}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{mesuresNumeriques.timeStamp}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+
+		<div class="col-md-5">
+			<h:form>
+
+				<div class="row">
+					<div class="row">
+						<h:column>
+							<h:outputLabel value="Numeric Sensor ID" />
+						</h:column>
+						<h:column>
+							<h:inputText
+								value="#{administrateurController.capteurNumeriqueId}" />
+						</h:column>
+						<h:column>
+							<h:outputText
+								value="#{administrateurController.mesuresNumeriquesOutput}" />
+						</h:column>
+					</div>
+					<div class="row">
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.mesuresNumeriquesFromCapteurId()}"
+								value="Search" styleClass="btn btn-success" />
+						</h:column>
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.suppressionCapteurNumerique()}"
+								value="Delete sensor" styleClass="btn btn-danger" />
+						</h:column>
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.mesuresNumeriquesFromCapteurIdRAZ()}"
+								value="Delete measures" styleClass="btn btn-danger" />
+						</h:column>
+
+					</div>
+				</div>
+				<div class="row">
+					<h:column>
+						<h:outputLabel value="Numeric sensor name" />
+					</h:column>
+					<h:column>
+						<h:inputText
+							value="#{administrateurController.capteurNumeriqueNom}" />
+					</h:column>
+					<h:column>
+						<h:commandButton
+							action="#{administrateurController.ajouterCapteurNumerique()}"
+							value="Add" styleClass="btn btn-success" />
+						<h:outputText
+							value="#{administrateurController.capteurNumeriqueOutput}" />
+					</h:column>
+				</div>
+				
+				<div class="row">
+					<div class="row">
+						<h:column>
+							<h:outputLabel value="Logic Sensor ID" />
+						</h:column>
+						<h:column>
+							<h:inputText
+								value="#{administrateurController.capteurLogiqueId}" />
+						</h:column>
+						<h:column>
+							<h:outputText
+								value="#{administrateurController.mesuresLogiquesOutput}" />
+						</h:column>
+					</div>
+					<div class="row">
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.mesuresLogiquesFromCapteurId()}"
+								value="Search" styleClass="btn btn-success" />
+						</h:column>
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.suppressionCapteurLogique()}"
+								value="Delete sensor" styleClass="btn btn-danger" />
+						</h:column>
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.mesuresLogiquesFromCapteurIdRAZ()}"
+								value="Delete measures" styleClass="btn btn-danger" />
+						</h:column>
+
+					</div>
+				</div>
+				<div class="row">
+					<h:column>
+						<h:outputLabel value="Logic sensor name" />
+					</h:column>
+					<h:column>
+						<h:inputText
+							value="#{administrateurController.capteurLogiqueNom}" />
+					</h:column>
+					<h:column>
+						<h:commandButton
+							action="#{administrateurController.ajouterCapteurLogique()}"
+							value="Add" styleClass="btn btn-success" />
+						<h:outputText
+							value="#{administrateurController.capteurLogiqueOutput}" />
+					</h:column>
+				</div>
+				<div class="row">
+					<h:column>
+						<h:outputLabel value="Type of sensor ID" />
+					</h:column>
+					<h:column>
+						<h:inputText
+							value="#{administrateurController.typeCapteurId}" />
+					</h:column>
+					<h:column>
+						<h:commandButton
+							action="#{administrateurController.capteursFromTypeCapteurId()}"
+							value="Add" styleClass="btn btn-success" />
+						<h:outputText
+							value="#{administrateurController.capteurLogiqueOutput}" />
+					</h:column>
+				</div>
+				
+				<div class="row">
+
+					<div class="row">
+						<h:column>
+							<h:outputLabel value="Frigo ID" />
+						</h:column>
+						<h:column>
+							<h:inputText
+								value="#{administrateurController.frigidaireId}" />
+						</h:column>
+						<h:column>
+							<h:outputText
+								value="#{administrateurController.frigidaireOutput}" />
+						</h:column>					
+					</div>
+					<div class="row">					
+						<h:column>
+							<h:commandButton
+								action="#{administrateurController.capteursFromFrigidaireId()}"
+								value="Look for sensors" styleClass="btn btn-success" />
+							<h:commandButton
+								action="#{administrateurController.suppressionFrigidaire()}"
+								value="Delete" styleClass="btn btn-danger" />
+						</h:column>
+					</div>
+				</div>
+				
+				<div class="row">
+					<h:column>
+						<h:outputLabel value="Name of the frigo" />
+					</h:column>
+					<h:column>
+						<h:inputText
+							value="#{administrateurController.frigidaireNom}" />
+					</h:column>
+					<h:column>
+						<h:commandButton
+							action="#{administrateurController.ajouterFrigidaire()}"
+							value="Add" styleClass="btn btn-success" />
+					</h:column>
+				</div>
+			</h:form>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<!--  DISPLAY ALL MESURES LOGIQUES -->
+		<div class="col-md-4">
+			<h:dataTable value="#{administrateurController.mesuresLogiques}"
+				var="mesuresLogiques"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifier</f:facet>
+					<h:outputText value="#{mesuresLogiques.idMesure}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">State</f:facet>
+					<h:outputText value="#{mesuresLogiques.etat}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Date</f:facet>
+					<h:outputText value="#{mesuresLogiques.timeStamp}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</div>
+	
+	<div class="row">
+
+		<div class="col-md-2">
+			<h:dataTable value="#{administrateurController.capteursNumeriques}"
+				var="capteursNumeriques"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifiant</f:facet>
+					<h:outputText value="#{capteursNumeriques.idCapteur}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{capteursNumeriques.nomCapteur}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+
+		<div class="col-md-2">
+			<h:dataTable value="#{administrateurController.capteursLogiques}"
+				var="capteursLogiques"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifiant</f:facet>
+					<h:outputText value="#{capteursLogiques.idCapteur}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{capteursLogiques.nomCapteur}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+		
+		<!--  DISPLAY ALL UNITS -->
+		<div class="col-md-5">
+			<h:dataTable value="#{administrateurController.allUnites}" var="unites"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{unites.idUnite}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Unit</f:facet>
+					<h:outputText value="#{unites.unite}" />
+				</h:column>
+			</h:dataTable>		
+		</div>
+
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2">
+			<h:dataTable value="#{administrateurController.typesCapteurs}"
+				var="typesCapteurs"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifiant</f:facet>
+					<h:outputText value="#{typesCapteurs.idTypeCapteur}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{typesCapteurs.type}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2">
+			<h:dataTable value="#{administrateurController.frigidaires}"
+				var="frigidaires"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifiant</f:facet>
+					<h:outputText value="#{frigidaires.idFrigidaire}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{frigidaires.nomFrigidaire}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</div>
+
+
+</h:body>
+</html>

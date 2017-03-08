@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>La bergerie</title>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>La bergerie</h1>
+		</div>
+
+		<div class="col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">A noter</div>
+				<div class="panel-body">Cet exemple est issu du travail de
+					Julie Bellon, Sébastien Marin et Alphonse Roy de la P2016 App.</div>
+				<div class="panel-footer ">Merci à eux !</div>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<h:dataTable value="#{bergerController.moutons}" var="mouton"
+				styleClass="table table-responsive table-striped">
+				<h:column>
+					<f:facet name="header">Identifiant</f:facet>
+					<h:outputText value="#{mouton.idMouton}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{mouton.nomMouton}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-success">
+				<h:form>
+					<div class="panel-heading">Nouveau mouton</div>
+					<div class="panel-body">
+						<div class="row">
+							<h:outputLabel value="Identifiant" />
+							<h:inputText value="#{bergerController.mouton.idMouton}" />
+						</div>
+						<div class="row">
+							<h:outputLabel value="Nom" />
+							<h:inputText value="#{bergerController.mouton.nomMouton}" />
+						</div>
+					</div>
+					<div class="panel-footer">
+						<h:commandButton action="#{bergerController.ajouterMouton()}"
+							value="Ajouter" styleClass="btn btn-success" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

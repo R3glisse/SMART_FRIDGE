@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Frigolooooo</title>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+
+	<div class="row">
+		<div class="col_lg-12">
+			<h:form>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="row">
+							<div class="col-lg-4">
+								<h1>Frigidaire</h1>
+							</div>
+							<div class="col-lg-8">
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:selectOneMenu id="fridge"
+										value="#{administrateurController.frigidaireId}">
+										<f:selectItem itemLabel="Frigidaire" itemValue=""
+											noSelectionOption="true" />
+										<f:selectItems value="#{administrateurController.frigidaires}"
+											var="frig" itemLabel="#{frig.nomFrigidaire}"
+											itemValue="#{frig.idFrigidaire}" />
+									</p:selectOneMenu>
+								</h:panelGrid>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<h:commandButton
+									action="#{administrateurController.capteursFromFrigidaireId()}"
+									value="Sélectionner ce frigidaire"
+									styleClass="btn btn-success" />
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						
+					</div>
+				</div>
+			</h:form>
+		</div>
+
+		<div class="col_lg-12">
+			<h:form>
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="row">
+							<div class="col-lg-6">
+								<h1>Ajout capteur</h1>
+							</div>
+							<div class="col-lg-6">
+								<h:panelGrid columns="1" cellpadding="5">
+									<p:selectOneMenu id="typeCap"
+										value="#{administrateurController.typeCapteurId}">
+										<f:selectItem itemLabel="Type de capteur" itemValue=""
+											noSelectionOption="true" />
+										<f:selectItems
+											value="#{administrateurController.typesCapteurs}"
+											var="typeCapteur" itemLabel="#{typeCapteur.type}"
+											itemValue="#{typeCapteur.idTypeCapteur}" />
+									</p:selectOneMenu>
+								</h:panelGrid>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<h:inputText value="#{administrateurController.capteurNom}" />
+							</div>
+							<div class="col-lg-6">
+								<h:commandButton
+									action="#{administrateurController.ajouterCapteur()}"
+									value="Ajouter capteur" styleClass="btn btn-success" />
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+					<div class="row">
+							<div class="col-lg-6">
+
+								<div class="col-lg-12">
+									<h:dataTable
+										value="#{administrateurController.capteursLogiques}"
+										var="capteursLogiques"
+										styleClass="table table-responsive table-striped">
+										<h:column>
+											<f:facet name="header">Capteurs logiques</f:facet>
+											<h:outputText value="#{capteursLogiques.nomCapteur}" />
+										</h:column>
+									</h:dataTable>
+								</div>
+							</div>
+							<div class="col-lg-6">
+
+								<div class="col-lg-12">
+									<h:dataTable
+										value="#{administrateurController.capteursNumeriques}"
+										var="capteursNumeriques"
+										styleClass="table table-responsive table-striped">
+										<h:column>
+											<f:facet name="header">Capteurs numeriques</f:facet>
+											<h:outputText value="#{capteursNumeriques.nomCapteur}" />
+										</h:column>
+									</h:dataTable>
+								</div>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

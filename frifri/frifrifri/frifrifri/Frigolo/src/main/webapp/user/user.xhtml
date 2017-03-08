@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>user</title>
+
+	<link rel="stylesheet" href="bootstrap.min.css" />
+	<link rel="stylesheet" href="user.css" />
+	<link href="home-main2.css" rel="stylesheet" />
+	<link href="navigateur.css" rel="stylesheet" />
+
+
+
+</h:head>
+
+<h:body>
+
+	<div class="container">
+		<header class="row">
+			<div class="col-lg-12">
+				<div class="container navigateur">
+					<div class="row">
+						<div class="col-lg-3 bloc1">
+							<div class="row">
+								<div class="col-lg-6">
+									<a href="#"><img class="img-responsive"
+										src="images/menu.png" title="menu" alt="menu" /></a>
+								</div>
+								<div class="col-lg-6">
+									<a href="#"> Menu </a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3"></div>
+
+						<div class="col-lg-3 bloc1">
+							<div class="row">
+								<div class="col-lg-6">
+									<a href="user.jsf"><img class="img-responsive"
+										src="images/maison.png" title="maison" alt="maison" /></a>
+								</div>
+								<div class="col-lg-6">
+									<a href="user.jsf"> Accueil </a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 bloc1">
+							<div class="row">
+								<div class="col-lg-6">
+									<a href="http://192.168.0.1:9990/Frigolo/portail.jsf"><img
+										class="img-responsive" src="images/fourmi.png" title="fourmi"
+										alt="fourmi" /></a>
+								</div>
+								<div class="col-lg-6">
+									<ui:fragment rendered="#{identity.loggedIn}">
+										<h:form>
+											<h:commandLink action="#{identity.logout}"> 
+										Quitter
+									</h:commandLink>
+
+										</h:form>
+									</ui:fragment>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</header>
+		<br> </br>
+		<div class="row">
+			<div class="col-lg-2">
+
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="ouvertures.jsf">Ouvertures</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="ouvertures.jsf"><img class="img-responsive"
+							src="images/ouvertures.png" title="ouvertures" alt="ouvertures" /></a>
+					</div>
+				</div>
+				<br> </br>
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="qualiteair.jsf">Qualité de l'air</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="qualiteair.jsf"><img class="img-responsive"
+							src="images/qualité_air.png" title="qualité_air"
+							alt="qualité_air" /></a>
+					</div>
+				</div>
+				<br> </br>
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="temperature.jsf">Temperature</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="temperature.jsf"><img class="img-responsive"
+							src="images/temperature.png" title="température"
+							alt="température" /></a>
+					</div>
+				</div>
+				<br> </br>
+				<div class="row bloc2">
+					<div class="col-lg-6">
+						<a href="user.jsf">Frigo</a>
+					</div>
+					<div class="col-lg-6">
+						<a href="user.jsf"><img class="img-responsive"
+							src="images/outils.png" title="outils" alt="outils" /></a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-lg-10">
+				<div class="row text">
+
+					<div class="col_lg-12">
+						<h:form>
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="row">
+										<div class="col-lg-4">
+											<h1>Frigidaire</h1>
+										</div>
+										<div class="col-lg-4"></div>
+										<div class="col-lg-4">
+											<h:panelGrid columns="1" cellpadding="5">
+												<p:selectOneMenu id="fridge"
+													value="#{administrateurController.frigidaireId}">
+													<f:selectItem itemLabel="Frigidaire" itemValue=""
+														noSelectionOption="true" />
+													<f:selectItems
+														value="#{administrateurController.frigidaires}" var="frig"
+														itemLabel="#{frig.nomFrigidaire}"
+														itemValue="#{frig.idFrigidaire}" />
+												</p:selectOneMenu>
+											</h:panelGrid>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-4">
+											<h:commandButton
+												action="#{administrateurController.capteursFromFrigidaireId()}"
+												value="Sélectionner ce frigidaire"
+												styleClass="btn btn-success" />
+										</div>
+										<div class="col-lg-4"></div>
+										<div class="col-lg-4"></div>
+									</div>
+								</div>
+							</div>
+						</h:form>
+					</div>
+					<br> </br> <br> </br> <br> </br>
+					<div class="col_lg-12">
+						<h:form>
+							<div class="row">
+								<div class="col-lg-8">
+									<div class="row">
+										<div class="col-lg-6"></div>
+										<div class="col-lg-6"></div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6"></div>
+										<div class="col-lg-6"></div>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="row">
+										<div class="col-lg-12">
+
+
+											<h:dataTable
+												value="#{administrateurController.capteursLogiques}"
+												var="capteursLogiques"
+												styleClass="table table-responsive table-striped">
+												<h:column>
+													<f:facet name="header">Capteurs logiques</f:facet>
+													<h:outputText value="#{capteursLogiques.nomCapteur}" />
+												</h:column>
+											</h:dataTable>
+
+										</div>
+									</div>
+
+									<div class="row">
+
+										<div class="col-lg-12">
+											<h:dataTable
+												value="#{administrateurController.capteursNumeriques}"
+												var="capteursNumeriques"
+												styleClass="table table-responsive table-striped">
+												<h:column>
+													<f:facet name="header">Capteurs numeriques</f:facet>
+													<h:outputText value="#{capteursNumeriques.nomCapteur}" />
+												</h:column>
+											</h:dataTable>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row image_frigolo">
+			<img class="img-responsive" src="images/frigolo.png" title="frigolo"
+				alt="frigolo" />
+
+		</div>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Frigolooooo</title>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+
+<h:form>
+
+	
+	
+	<div class="row">
+		<div class="col-lg-12">
+
+
+
+			<div class="row">
+				<div class="col-lg-2">
+					<h1>Capteur</h1>
+				</div>
+				<div class="col-lg-2">
+					<div class="col-lg-6">
+					
+						<f:metadata>
+						    <f:viewAction action="#{administrateurController.goingToAirQuality()}" />
+						</f:metadata>	
+						<h:panelGrid columns="1" cellpadding="5">
+							<p:selectOneMenu id="sensor"
+								value="#{administrateurController.capteurNumeriqueId}">
+								<f:selectItem itemLabel="Capteur" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems value="#{administrateurController.capteursNumeriques}"
+									var="sensor" itemLabel="#{sensor.nomCapteur}"
+									itemValue="#{sensor.idCapteur}" />
+							</p:selectOneMenu>
+						</h:panelGrid>
+					
+					</div>
+					<div class="col-lg-6">
+						<h:commandButton
+							action="#{administrateurController.mesuresNumeriquesFromCapteurId()}"
+							value="Afficher mesures" styleClass="btn btn-success" />
+					</div>
+				</div>
+				<div class="col-lg-2"></div>
+				<div class="col-lg-3"></div>
+				<div class="col-lg-3"></div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-lg-12">
+					<p:chart type="line" model="#{administrateurController.lineModel_MesNum}" style="height:300px;" responsive="true"/>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+</h:form>
+
+</h:body>
+</html>
